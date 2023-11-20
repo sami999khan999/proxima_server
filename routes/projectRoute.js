@@ -19,12 +19,12 @@ router.post("/", (req, res) => {
 });
 
 // DELEAT project
-router.delete("/", (req, res) => {
+router.delete("/:id", (req, res) => {
   res.json({ message: "DELEAT a project" });
 });
 
 // UPDATE a project
-router.patch("/", (req, res) => {
+router.patch("/:id", (req, res) => {
   res.json({ message: "UPDATE a project" });
 });
 
