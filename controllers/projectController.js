@@ -58,7 +58,7 @@ const deleatProject = async (req, res) => {
 };
 
 // update a project
-const updataProject = async (req, res) => {
+const updateProject = async (req, res) => {
   const id = req.params.id;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -79,4 +79,5 @@ module.exports = {
   getAllProjects,
   getSingleProject,
   deleatProject,
+  updateProject,
 };
