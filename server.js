@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use("/api/projects/", projectRouter);
-app.use("/api/user", userRouter);
+app.use("/api/user/", userRouter);
 
 // mongo
 mongoose
