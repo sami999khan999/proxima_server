@@ -5,6 +5,10 @@ const validator = require("validator");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  name: {
+    type: String,
+    require: true,
+  },
   email: {
     type: String,
     require: true,
@@ -16,9 +20,10 @@ const userSchema = new Schema({
   },
 });
 
-userSchema.statics.signup = async function (email, password) {
+// signup
+userSchema.statics.signup = async function (name, email, password) {
   // check if the fields are empty or not
-  if (!email || !password) {
+  if (!name || !email || !password) {
     throw Error("All fields mush be fields");
   }
 
@@ -43,11 +48,12 @@ userSchema.statics.signup = async function (email, password) {
   const hash = await bcrypt.hash(password, salt);
 
   // create an user
-  const user = await this.create({ email, password: hash });
+  const user = await this.create({ name, email, password: hash });
 
   return user;
 };
 
+// login
 userSchema.statics.login = async function (email, password) {
   if (!email || !password) {
     throw Error("All fields must be fields");
